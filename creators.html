@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Firefly's Story | Creators</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ================= CENTERED NAVIGATION ================= */
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 40px;
+      box-sizing: border-box;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 38px;
+      flex-wrap: wrap;
+    }
+
+    header nav a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    header nav a:hover {
+      transform: translateY(-2px);
+    }
+
+    header nav a.active {
+      font-weight: 800;
+    }
+
+    header nav a:focus-visible,
+    .back-home:focus-visible {
+      outline: 3px solid #ffd52f;
+      outline-offset: 4px;
+    }
+
+    /* ================= CREATORS PAGE ================= */
+
+    .creators-page {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 25px;
+    }
+
+    /* ================= CREATOR HEADER ================= */
+
+    .creator-header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .creator-header h1 {
+      font-family: Georgia, serif;
+      font-size: 65px;
+      line-height: 1;
+      margin: 15px 0;
+    }
+
+    .creator-header h1 span {
+      color: #ff8a00;
+      font-style: italic;
+    }
+
+    .creator-header p {
+      color: #627477;
+      line-height: 1.8;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* ================= BACK TO HOME BUTTON ================= */
+
+    .back-home-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0 55px;
+    }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #ffd54f, #f9a825);
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 6px 15px rgba(249, 168, 37, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .back-home:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(249, 168, 37, 0.4);
+    }
+
+    .back-home:active {
+      transform: scale(0.97);
+    }
+
+    /* ================= CREATOR GRID ================= */
+
+    .creator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    /* ================= CREATOR CARDS ================= */
+
+    .creator-card {
+      min-width: 0;
+      background: #ffffff;
+      border: 1px solid #eeeeee;
+      border-radius: 30px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(33, 67, 74, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .creator-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 42px rgba(33, 67, 74, 0.12);
+    }
+
+    /* ================= CREATOR PHOTOS ================= */
+
+    .creator-icon {
+      width: 180px;
+      height: 180px;
+      max-width: 100%;
+      aspect-ratio: 1 / 1;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #72d0c7;
+      display: grid;
+      place-items: center;
+      font-size: 55px;
+      color: #ffd52f;
+      box-shadow: 0 5px 18px rgba(33, 67, 74, 0.10);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .creator-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .creator-card:hover .creator-icon {
+      transform: scale(1.06);
+      box-shadow:
+        0 0 15px rgba(255, 213, 47, 0.35),
+        0 0 30px rgba(255, 213, 47, 0.2);
+    }
+
+    .creator-card:hover .creator-icon img {
+      transform: scale(1.05);
+    }
+
+    .creator-card:nth-child(2) .creator-icon {
+      background: #cbb7dc;
+    }
+
+    /* ================= CREATOR TEXT ================= */
+
+    .creator-card h2 {
+      font-family: Georgia, serif;
+      font-size: 32px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+      margin: 20px 0 8px;
+    }
+
+    .role {
+      color: #ff8a00;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.15em;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .creator-card p {
+      color: #627477;
+      line-height: 1.7;
+    }
+
+    /* ================= SCHOOL ================= */
+
+    .school {
+      margin-top: 45px;
+      background: #ffd52f;
+      padding: 35px;
+      border-radius: 28px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .school:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(33, 67, 74, 0.1);
+    }
+
+    .school h2 {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      line-height: 1.3;
+      margin: 5px;
+    }
+
+    .school p {
+      color: #5b5100;
+      line-height: 1.7;
+    }
+
+    /* ================= ADVISER ================= */
+
+    .adviser {
+      margin-top: 25px;
+      background: #72d0c7;
+      padding: 30px;
+      border-radius: 25px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .adviser:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(33, 67, 74, 0.1);
+    }
+
+    .adviser h2 {
+      font-family: Georgia, serif;
+      margin: 5px;
+    }
+
+    .adviser p {
+      color: #40595d;
+      line-height: 1.7;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      padding: 30px 20px;
+      flex-wrap: wrap;
+      color: #627477;
+      line-height: 1.7;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 900px) {
+      .creator-header h1 {
+        font-size: 58px;
+      }
+
+      .creator-card {
+        padding: 30px 24px;
+      }
+
+      .creator-icon {
+        width: 160px;
+        height: 160px;
+      }
+
+      .creator-card h2 {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 750px) {
+      header {
+        padding: 20px;
+      }
+
+      header nav {
+        gap: 20px;
+      }
+
+      header nav a {
+        font-size: 14px;
+      }
+
+      .creators-page {
+        padding: 55px 20px 80px;
+      }
+
+      .creator-header h1 {
+        font-size: 48px;
+      }
+
+      .creator-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .creator-card {
+        padding: 32px 25px;
+      }
+
+      .creator-icon {
+        width: 180px;
+        height: 180px;
+      }
+
+      .back-home-wrapper {
+        margin-bottom: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header nav {
+        gap: 14px;
+      }
+
+      header nav a {
+        font-size: 13px;
+      }
+
+      .creators-page {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .creator-header h1 {
+        font-size: 40px;
+      }
+
+      .creator-icon {
+        width: 150px;
+        height: 150px;
+      }
+
+      .creator-card h2 {
+        font-size: 27px;
+      }
+
+      .school,
+      .adviser {
+        padding: 25px 20px;
+      }
+
+      .school h2 {
+        font-size: 25px;
+      }
+    }
+
+    /* ================= REDUCED MOTION ================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      header nav a,
+      .creator-card,
+      .creator-icon,
+      .creator-icon img,
+      .school,
+      .adviser,
+      .back-home {
+        transition: none;
+      }
+
+      .creator-card:hover,
+      .school:hover,
+      .adviser:hover,
+      .creator-card:hover .creator-icon,
+      .creator-card:hover .creator-icon img,
+      .back-home:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+    <nav aria-label="Main navigation">
+
+      <a href="index.html">Home</a>
+
+      <a href="contact.html" class="active" aria-current="page">
+        Contact
+      </a>
+
+      <a href="feedback.html">
+        Feedback
+      </a>
+
+    </nav>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="creators-page">
+
+    <!-- ================= CREATOR HEADER ================= -->
+
+    <section class="creator-header">
+
+      <h1>
+        Meet the
+        <span>Creators.</span>
+      </h1>
+
+      <p>
+        Meet the students behind
+        <i>The Firefly’s Story: When Hands Begin to Glow.</i>
+      </p>
+
+    </section>
+
+    <!-- ================= CREATOR CARDS ================= -->
+
+    <section class="creator-grid" aria-label="Project creators">
+
+      <!-- ALTHEA -->
+
+      <article class="creator-card">
+
+        <div class="creator-icon">
+          <img
+            src="images/althea.jpg"
+            alt="AN"
+          >
+        </div>
+
+        <p class="role">Creator · Visual Media Arts</p>
+
+        <h2>Althea Nicole Sumang</h2>
+
+        <p>
+          3rd Year<br>
+          Bachelor in Applied Deaf Studies<br>
+          Visual Media Arts Track
+        </p>
+
+        <p>
+          Creator and student contributor for
+          <i>The Firefly's Story</i>, working on the
+          storytelling concept, visual direction, website,
+          and educational experience.
+        </p>
+
+      </article>
+
+      <!-- NICOS -->
+
+      <article class="creator-card">
+
+        <div class="creator-icon">
+          <img
+            src="images/nicos.jpg"
+            alt="Photo"
+          >
+        </div>
+
+        <p class="role">Creator · Visual Media Arts</p>
+
+        <h2>Nicos Christian Zurita</h2>
+
+        <p>
+          3rd Year<br>
+          Bachelor in Applied Deaf Studies<br>
+          Visual Media Arts Track
+        </p>
+
+        <p>
+          Creator and student contributor for
+          <i>The Firefly's Story</i>, working on the
+          character development, visual concept, storytelling,
+          and overall project design.
+        </p>
+
+      </article>
+
+    </section>
+
+    <!-- ================= SCHOOL ================= -->
+
+    <section class="school">
+
+      <p class="eyebrow">SCHOOL</p>
+
+      <h2>De La Salle–College of Saint Benilde</h2>
+
+      <p>
+        School of Deaf Education and Applied Studies<br>
+        Bachelor in Applied Deaf Studies · Visual Media Arts
+      </p>
+
+    </section>
+
+    <!-- ================= ADVISER ================= -->
+
+    <section class="adviser">
+
+      <p class="eyebrow">CAPSTONE ADVISER</p>
+
+      <h2>Mr. Raymond J. Manding</h2>
+
+      <p>VISPRO2 Adviser / Faculty</p>
+
+    </section>
+
+    <!-- ================= BACK TO HOME ================= -->
+
+    <div class="back-home-wrapper">
+      <a class="back-home" href="index.html">
+        <span aria-hidden="true"></span>
+        Back to Home
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+    <span>
+      De La Salle–College of Saint Benilde · SDEAS
+      © 2026 The Firefly's Story · Inclusive Visual Storytelling
+    </span>
+  </footer>
+
+</body>
+</html>

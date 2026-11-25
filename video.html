@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Firefly's Story  | Video</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =================================================
+       CENTERED NAVIGATION
+       ================================================= */
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 40px;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 38px;
+    }
+
+    header nav a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+
+      transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    header nav a:hover {
+      transform: translateY(-2px);
+    }
+
+    header nav a.active {
+      font-weight: 800;
+    }
+
+
+    /* =================================================
+       VIDEO PAGE
+       ================================================= */
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 40px;
+
+      text-align: center;
+    }
+
+    .eyebrow {
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: 58px;
+      line-height: 1.08;
+
+      margin: 10px auto 18px;
+
+      text-align: center;
+    }
+
+    .lead.narrow {
+      max-width: 700px;
+
+      margin: 0 auto;
+
+      text-align: center;
+
+      line-height: 1.7;
+    }
+
+
+    /* =================================================
+       VIDEO SECTION
+       ================================================= */
+
+    .video-layout {
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+
+      gap: 35px;
+
+      margin-top: 50px;
+    }
+
+
+    /* =================================================
+       VIDEO BOX
+       ================================================= */
+
+    .video-box {
+      position: relative;
+
+      width: 100%;
+      max-width: 850px;
+
+      aspect-ratio: 16 / 9;
+
+      border-radius: 24px;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff3d6,
+          #ffe0b2
+        );
+
+      box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.12);
+    }
+
+    .video-box video {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      border-radius: 24px;
+    }
+
+
+    /* =================================================
+       BIG PLAY BUTTON
+       ================================================= */
+
+    .big-play {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      width: 75px;
+      height: 75px;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+
+      border: none;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff7043,
+          #f4511e
+        );
+
+      color: white;
+
+      font-size: 28px;
+
+      padding-left: 5px;
+
+      box-shadow:
+        0 8px 25px
+        rgba(244, 81, 30, 0.35);
+
+      cursor: pointer;
+
+      z-index: 5;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .big-play:hover {
+      transform:
+        translate(-50%, -50%)
+        scale(1.08);
+
+      box-shadow:
+        0 10px 30px
+        rgba(244, 81, 30, 0.45);
+    }
+
+    .big-play.hidden {
+      display: none;
+    }
+
+
+    /* =================================================
+       FULLSCREEN BUTTON
+       ================================================= */
+
+    .fullscreen-btn {
+      position: absolute;
+
+      right: 15px;
+      bottom: 15px;
+
+      width: 44px;
+      height: 44px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background:
+        rgba(0, 0, 0, 0.65);
+
+      color: white;
+
+      font-size: 24px;
+
+      cursor: pointer;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      z-index: 10;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .fullscreen-btn:hover {
+      transform: scale(1.08);
+
+      background:
+        rgba(0, 0, 0, 0.85);
+    }
+
+
+    /* =================================================
+       INFORMATION — BELOW VIDEO
+       ================================================= */
+
+    .side-info {
+      width: 100%;
+      max-width: 700px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 5px 20px 0;
+    }
+
+    .tag {
+      display: inline-block;
+
+      padding: 7px 13px;
+
+      border-radius: 50px;
+
+      background: #fff3cd;
+
+      color: #f4511e;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      letter-spacing: 1px;
+
+      text-align: center;
+    }
+
+    .side-info h2 {
+      font-size: 34px;
+
+      line-height: 1.15;
+
+      margin: 16px auto;
+
+      text-align: center;
+    }
+
+    .side-info p {
+      max-width: 650px;
+
+      line-height: 1.7;
+
+      margin: 0 auto 25px;
+
+      text-align: center;
+    }
+
+
+    /* =================================================
+       CENTERED BACK BUTTON
+       ================================================= */
+
+    .back-link {
+      display: inline-flex;
+
+      justify-content: center;
+      align-items: center;
+
+      padding: 13px 20px;
+
+      border-radius: 50px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffd54f,
+          #f9a825
+        );
+
+      color: #2e7d32;
+
+      font-weight: 700;
+
+      font-size: 14px;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 6px 15px
+        rgba(249, 168, 37, 0.3);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .back-link:hover {
+      transform:
+        translateY(-4px);
+
+      box-shadow:
+        0 10px 24px
+        rgba(249, 168, 37, 0.45);
+    }
+
+
+    /* =================================================
+       FOOTER
+       ================================================= */
+
+    footer {
+      text-align: center;
+
+      padding: 30px 20px;
+    }
+
+
+    /* =================================================
+       RESPONSIVE
+       ================================================= */
+
+    @media (max-width: 900px) {
+
+      .page-wrap {
+        padding: 60px 30px;
+      }
+
+      .page-title {
+        font-size: 48px;
+      }
+
+      .video-layout {
+        gap: 30px;
+      }
+
+      .video-box {
+        max-width: 100%;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      header {
+        padding: 20px;
+      }
+
+      header nav {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      header nav a {
+        font-size: 14px;
+      }
+
+      .page-wrap {
+        padding: 45px 20px;
+      }
+
+      .page-title {
+        font-size: 38px;
+
+        text-align: center;
+      }
+
+      .lead.narrow {
+        font-size: 15px;
+
+        text-align: center;
+      }
+
+      .video-layout {
+        margin-top: 35px;
+
+        gap: 25px;
+      }
+
+      .side-info {
+        padding: 0 10px;
+      }
+
+      .side-info h2 {
+        font-size: 28px;
+
+        text-align: center;
+      }
+
+      .side-info p {
+        font-size: 15px;
+
+        text-align: center;
+      }
+
+      .big-play {
+        width: 60px;
+        height: 60px;
+
+        font-size: 22px;
+      }
+
+      .fullscreen-btn {
+        width: 38px;
+        height: 38px;
+
+        right: 10px;
+        bottom: 10px;
+
+        font-size: 20px;
+      }
+
+    }
+
+
+    /* =================================================
+       REDUCED MOTION
+       ================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      header nav a,
+      .back-link,
+      .big-play,
+      .fullscreen-btn {
+
+        transition: none;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- =================================================
+       HEADER
+       ================================================= -->
+
+  <header>
+
+
+<nav>
+
+  <a href="index.html">
+    Home
+  </a>
+
+  <a href="creators.html">
+    Contact
+  </a>
+
+  <a href="feedback.html">
+    Feedback
+  </a>
+
+</nav>
+
+
+  </header>
+
+  <!-- =================================================
+       MAIN
+       ================================================= -->
+
+  <main class="page-wrap">
+
+<p class="eyebrow"> VIDEO </p>
+<h1 class="page-title">
+  Watch the story.
+</h1>
+
+
+<p class="lead narrow">
+  Watch the story come to life through Filipino Sign Language and visual storytelling.
+</p>
+
+
+<!-- =================================================
+     VIDEO + INFORMATION
+     ================================================= -->
+
+<div class="video-layout">
+
+
+  <!-- VIDEO -->
+
+  <div class="video-box">
+
+    <video
+      id="storyVideo"
+      controls
+      playsinline
+      preload="metadata"
+    >
+
+      <source
+        src="story.mp4"
+        type="video/mp4"
+      >
+
+      Your browser does not support video.
+
+    </video>
+
+
+    <!-- BIG PLAY -->
+
+    <button
+      class="big-play"
+      id="bigPlay"
+      type="button"
+      aria-label="Play story video"
+    >
+      ▶
+    </button>
+
+
+    <!-- FULLSCREEN -->
+
+    <button
+      class="fullscreen-btn"
+      id="fullscreenBtn"
+      type="button"
+      aria-label="Fullscreen"
+      title="Fullscreen"
+    >
+      ⛶
+    </button>
+
+  </div>
+
+
+  <!-- =================================================
+       TEXT BELOW VIDEO
+       ================================================= -->
+
+  <div class="side-info">
+
+    <span class="tag">
+      FSL STORY
+    </span>
+
+
+    <p>
+     The story is told through Filipino Sign Language (FSL). Through hand movements, facial expressions, and visual storytelling, Alipat shares the story in a way that can be seen and understood.
+    </p>
+
+
+    <a
+      href="index.html"
+      class="back-link"
+    >
+          Back to Home
+    </a>
+
+  </div>
+
+
+</div>
+
+
+  </main>
+
+  <!-- =================================================
+       FOOTER
+       ================================================= -->
+
+ <footer>
+
+    De La Salle-College of Saint Benilde · SDEAS © 2026 The Firefly's Story · Inclusive Visual Storytelling
+
+
+  </footer>
+
+  <!-- =================================================
+       VIDEO SCRIPT
+       ================================================= -->
+
+  <script>
+
+    const video =
+      document.getElementById(
+        "storyVideo"
+      );
+
+    const bigPlay =
+      document.getElementById(
+        "bigPlay"
+      );
+
+    const fullscreenBtn =
+      document.getElementById(
+        "fullscreenBtn"
+      );
+
+
+    /* =================================================
+       BIG PLAY BUTTON
+       ================================================= */
+
+    bigPlay.addEventListener(
+      "click",
+      () => {
+
+        video.play();
+
+      }
+    );
+
+
+    /* =================================================
+       HIDE BIG PLAY WHEN VIDEO PLAYS
+       ================================================= */
+
+    video.addEventListener(
+      "play",
+      () => {
+
+        bigPlay.classList.add(
+          "hidden"
+        );
+
+      }
+    );
+
+
+    /* =================================================
+       SHOW BIG PLAY WHEN VIDEO IS PAUSED
+       ================================================= */
+
+    video.addEventListener(
+      "pause",
+      () => {
+
+        if (!video.ended) {
+
+          bigPlay.classList.remove(
+            "hidden"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =================================================
+       SHOW BIG PLAY WHEN VIDEO ENDS
+       ================================================= */
+
+    video.addEventListener(
+      "ended",
+      () => {
+
+        bigPlay.classList.remove(
+          "hidden"
+        );
+
+      }
+    );
+
+
+    /* =================================================
+       FULLSCREEN BUTTON
+       ================================================= */
+
+    fullscreenBtn.addEventListener(
+      "click",
+      async () => {
+
+        try {
+
+          if (!document.fullscreenElement) {
+
+            if (video.requestFullscreen) {
+
+              await video.requestFullscreen();
+
+            }
+
+            else if (
+              video.webkitRequestFullscreen
+            ) {
+
+              video.webkitRequestFullscreen();
+
+            }
+
+            else if (
+              video.msRequestFullscreen
+            ) {
+
+              video.msRequestFullscreen();
+
+            }
+
+          }
+
+          else {
+
+            if (document.exitFullscreen) {
+
+              await document.exitFullscreen();
+
+            }
+
+            else if (
+              document.webkitExitFullscreen
+            ) {
+
+              document.webkitExitFullscreen();
+
+            }
+
+          }
+
+        }
+
+        catch (error) {
+
+          console.log(
+            "Fullscreen could not be opened.",
+            error
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =================================================
+       UPDATE FULLSCREEN BUTTON
+       ================================================= */
+
+    document.addEventListener(
+      "fullscreenchange",
+      () => {
+
+        if (document.fullscreenElement) {
+
+          fullscreenBtn.textContent = "×";
+
+          fullscreenBtn.setAttribute(
+            "aria-label",
+            "Exit fullscreen"
+          );
+
+          fullscreenBtn.setAttribute(
+            "title",
+            "Exit fullscreen"
+          );
+
+        }
+
+        else {
+
+          fullscreenBtn.textContent = "⛶";
+
+          fullscreenBtn.setAttribute(
+            "aria-label",
+            "Fullscreen"
+          );
+
+          fullscreenBtn.setAttribute(
+            "title",
+            "Fullscreen"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =================================================
+       KEYBOARD ACCESS
+       ================================================= */
+
+    bigPlay.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+
+          event.preventDefault();
+
+          video.play();
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+
+</html>
