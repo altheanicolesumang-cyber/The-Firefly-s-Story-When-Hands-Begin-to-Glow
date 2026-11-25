@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="The Firefly's Story: When Hands Begin to Glow is a visual storytelling project about Filipino Sign Language, Deaf identity, and inclusion.">
+
+  <title>The Firefly's Story | Home</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* CENTERED NAVIGATION */
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 40px;
+      box-sizing: border-box;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 38px;
+    }
+
+    header nav a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    header nav a:hover {
+      transform: translateY(-2px);
+    }
+
+    header nav a.active {
+      font-weight: 800;
+    }
+
+    /* HERO TITLE */
+
+    .hero-text h1 {
+      font-size: 58px;
+      line-height: 1.08;
+      max-width: 650px;
+    }
+
+    .hero-text h1 em {
+      font-style: normal;
+    }
+
+    /* BUTTONS */
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.2s ease,
+                  box-shadow 0.25s ease,
+                  background 0.3s ease;
+      animation: buttonFloat 3s ease-in-out infinite;
+    }
+
+    .btn.orange {
+      background: linear-gradient(135deg, #ff7043, #f4511e);
+      color: #fff8e1;
+      box-shadow: 0 6px 15px rgba(244, 81, 30, 0.3);
+    }
+
+    .btn.yellow {
+      background: linear-gradient(135deg, #ffd54f, #f9a825);
+      color: #2e7d32;
+      box-shadow: 0 6px 15px rgba(249, 168, 37, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      animation: none;
+    }
+
+    .btn.orange:hover {
+      background: linear-gradient(135deg, #ff8a65, #ff5722);
+      box-shadow: 0 10px 24px rgba(244, 81, 30, 0.45);
+    }
+
+    .btn.yellow:hover {
+      background: linear-gradient(135deg, #ffe082, #ffc107);
+      box-shadow: 0 10px 24px rgba(249, 168, 37, 0.45);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+      animation: none;
+    }
+
+    .btn.yellow:active {
+      animation: yellowFireflyGlow 0.55s ease-out;
+    }
+
+    .btn.orange:active {
+      animation: orangeFireflyGlow 0.55s ease-out;
+    }
+
+    @keyframes yellowFireflyGlow {
+      0%, 100% {
+        box-shadow: 0 6px 15px rgba(249, 168, 37, 0.3);
+      }
+
+      40% {
+        box-shadow:
+          0 0 8px rgba(255, 235, 140, 1),
+          0 0 20px rgba(255, 213, 79, 0.9),
+          0 0 40px rgba(255, 193, 7, 0.6),
+          0 0 65px rgba(255, 193, 7, 0.35);
+      }
+
+      70% {
+        box-shadow:
+          0 0 6px rgba(255, 235, 140, 0.8),
+          0 0 16px rgba(255, 213, 79, 0.6),
+          0 0 30px rgba(255, 193, 7, 0.35);
+      }
+    }
+
+    @keyframes orangeFireflyGlow {
+      0%, 100% {
+        box-shadow: 0 6px 15px rgba(244, 81, 30, 0.3);
+      }
+
+      40% {
+        box-shadow:
+          0 0 8px rgba(255, 180, 150, 1),
+          0 0 20px rgba(255, 112, 67, 0.9),
+          0 0 40px rgba(244, 81, 30, 0.6),
+          0 0 65px rgba(244, 81, 30, 0.35);
+      }
+
+      70% {
+        box-shadow:
+          0 0 6px rgba(255, 180, 150, 0.8),
+          0 0 16px rgba(255, 112, 67, 0.6),
+          0 0 30px rgba(244, 81, 30, 0.35);
+      }
+    }
+
+    @keyframes buttonFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+
+    /* VIDEO AND BOOK CARDS */
+
+    .card {
+      position: relative;
+      transition: transform 0.35s ease,
+                  box-shadow 0.35s ease,
+                  filter 0.35s ease;
+      animation: cardFloat 4s ease-in-out infinite;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.02);
+      animation: none;
+      filter: brightness(1.03);
+    }
+
+    .card:first-child:hover {
+      box-shadow:
+        0 10px 25px rgba(244, 81, 30, 0.22),
+        0 0 18px rgba(255, 112, 67, 0.28),
+        0 0 35px rgba(255, 112, 67, 0.15);
+    }
+
+    .card:nth-child(2):hover {
+      box-shadow:
+        0 10px 25px rgba(249, 168, 37, 0.22),
+        0 0 18px rgba(255, 213, 79, 0.3),
+        0 0 35px rgba(255, 213, 79, 0.16);
+    }
+
+    .card:active {
+      transform: scale(0.98);
+      animation: none;
+    }
+
+    .card:first-child:active {
+      animation: videoFireflyGlow 0.6s ease-out;
+    }
+
+    .card:nth-child(2):active {
+      animation: bookFireflyGlow 0.6s ease-out;
+    }
+
+    @keyframes videoFireflyGlow {
+      0%, 100% {
+        box-shadow: 0 5px 15px rgba(244, 81, 30, 0.2);
+      }
+
+      35% {
+        box-shadow:
+          0 0 8px rgba(255, 180, 150, 1),
+          0 0 20px rgba(255, 112, 67, 0.9),
+          0 0 40px rgba(244, 81, 30, 0.7),
+          0 0 65px rgba(244, 81, 30, 0.4);
+      }
+
+      60% {
+        box-shadow:
+          0 0 10px rgba(255, 200, 170, 1),
+          0 0 25px rgba(255, 112, 67, 1),
+          0 0 50px rgba(244, 81, 30, 0.8),
+          0 0 85px rgba(244, 81, 30, 0.45);
+      }
+    }
+
+    @keyframes bookFireflyGlow {
+      0%, 100% {
+        box-shadow: 0 5px 15px rgba(249, 168, 37, 0.2);
+      }
+
+      35% {
+        box-shadow:
+          0 0 8px rgba(255, 245, 180, 1),
+          0 0 20px rgba(255, 213, 79, 0.95),
+          0 0 40px rgba(255, 193, 7, 0.7),
+          0 0 65px rgba(255, 193, 7, 0.4);
+      }
+
+      60% {
+        box-shadow:
+          0 0 10px rgba(255, 250, 200, 1),
+          0 0 25px rgba(255, 213, 79, 1),
+          0 0 50px rgba(255, 193, 7, 0.8),
+          0 0 85px rgba(255, 193, 7, 0.45);
+      }
+    }
+
+    .card-image {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .card-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    .card:hover .card-image {
+      transform: scale(1.04);
+      filter: brightness(1.05);
+    }
+
+    .video-preview .play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      animation: playPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes playPulse {
+      0%, 100% {
+        scale: 1;
+      }
+
+      50% {
+        scale: 1.08;
+      }
+    }
+
+    /* KEYBOARD FOCUS */
+
+    .btn:focus-visible,
+    .card:focus-visible,
+    header nav a:focus-visible {
+      outline: 3px solid #ffd54f;
+      outline-offset: 4px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      flex-wrap: wrap;
+      padding: 24px 20px;
+      box-sizing: border-box;
+    }
+
+    footer span {
+      text-align: center;
+    }
+
+    /* RESPONSIVE DESIGN */
+
+    @media (max-width: 900px) {
+      .hero-text h1 {
+        font-size: 48px;
+        max-width: 600px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 20px;
+      }
+
+      header nav {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      header nav a {
+        font-size: 14px;
+      }
+
+      .hero-text h1 {
+        font-size: 38px;
+        line-height: 1.1;
+      }
+
+      .buttons {
+        gap: 12px;
+      }
+
+      .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+
+      .card {
+        animation-duration: 4.5s;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 6px;
+        padding: 20px;
+      }
+    }
+
+    /* REDUCED MOTION */
+
+    @media (prefers-reduced-motion: reduce) {
+      .btn,
+      .card,
+      .play {
+        animation: none;
+      }
+
+      .btn,
+      .card,
+      .card-image,
+      header nav a {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <nav aria-label="Main navigation">
+      <a class="active" href="index.html" aria-current="page">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="feedbackone.html">Feedback</a>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+
+  <main>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero" aria-labelledby="hero-title">
+
+      <div class="hero-text">
+
+        <p class="eyebrow">
+          FSL · DEAF AWARENESS · VISUAL STORYTELLING
+        </p>
+
+        <h1 id="hero-title">
+          The Firefly's Story:
+          When <em>Hands</em>
+          Begin to Glow.
+        </h1>
+
+        <p class="lead">
+          Meet Alipat, a young Deaf firefly whose glowing hands
+          bring Filipino Sign Language to life. Discover a story
+          about visual communication, self-acceptance, and inclusion.
+        </p>
+
+        <div class="buttons">
+          <a class="btn orange" href="creators.html">
+            Meet the Creators
+          </a>
+
+          <a class="btn yellow" href="projectone.html">
+            About the Project
+          </a>
+        </div>
+
+      </div>
+
+      <!-- HERO ART -->
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="star">✦</div>
+        <div class="firefly">✦</div>
+        <div class="hill"></div>
+      </div>
+
+    </section>
+
+    <!-- INTRODUCTION -->
+
+    <section class="intro" aria-labelledby="experience-title">
+
+      <p class="eyebrow">
+        CHOOSE YOUR EXPERIENCE
+      </p>
+
+      <h2 id="experience-title">
+        What would you like to explore?
+      </h2>
+
+      <p class="intro-text">
+        Discover the story through Filipino Sign Language,
+        visual storytelling, and reading.
+      </p>
+
+    </section>
+
+    <!-- STORY EXPERIENCE CARDS -->
+
+    <section class="cards" aria-label="Story experiences">
+
+      <!-- VIDEO CARD -->
+
+      <a class="card" href="video.html">
+
+        <div class="card-image video-preview">
+          <img
+            src="images/video-thumbnail.png"
+            alt="FSL storytelling video"
+          >
+          <span class="play" aria-hidden="true">▶</span>
+        </div>
+
+        <div class="card-content">
+
+          <small>WATCH</small>
+
+          <h3>FSL Storytelling Video</h3>
+
+          <p>
+            Watch the story through Filipino Sign Language
+            and expressive visual storytelling.
+          </p>
+
+          <span class="arrow">
+            Watch the story
+          </span>
+
+        </div>
+
+      </a>
+
+      <!-- DIGITAL STORYBOOK CARD -->
+
+      <a class="card" href="book.html">
+
+        <div class="card-image book-preview">
+          <img
+            src="images/book-cover.png"
+            alt="The Firefly's Story: When Hands Begin to Glow"
+          >
+        </div>
+
+        <div class="card-content">
+
+          <small>READ</small>
+
+          <h3>Digital Storybook</h3>
+
+          <p>
+            Turn the pages and follow the journey at your own pace.
+          </p>
+
+          <span class="arrow">
+            Open the storybook
+          </span>
+
+        </div>
+
+      </a>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <span>De La Salle–College of Saint Benilde · SDEAS</span>
+    <span>© 2026 The Firefly's Story · Inclusive Visual Storytelling</span>
+  </footer>
+
+</body>
+</html>
