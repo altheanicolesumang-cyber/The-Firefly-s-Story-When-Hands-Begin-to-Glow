@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Share your feedback about The Firefly's Story: When Hands Begin to Glow.">
+
+  <title>The Firefly's Story | Feedback</title>
+
+  <style>
+
+    /* GENERAL */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #fff8e8;
+      color: #3b3025;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    /* HEADER AND NAVIGATION */
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 40px;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 38px;
+      flex-wrap: wrap;
+    }
+
+    header nav a {
+      color: #5c4632;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    header nav a:hover {
+      color: #f4511e;
+      transform: translateY(-3px);
+    }
+
+    header nav a.active {
+      color: #f4511e;
+      font-weight: 800;
+    }
+
+    /* PAGE HEADER */
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 25px;
+    }
+
+    .eyebrow {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #f4511e;
+    }
+
+    .page-title {
+      color: #463322;
+      font-family: Georgia, serif;
+      font-size: 58px;
+      line-height: 1.08;
+      text-align: center;
+      margin: 12px 0 18px;
+    }
+
+    .lead {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #685443;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    /* FEEDBACK FORM */
+
+    .feedback-card {
+      max-width: 760px;
+      margin: 45px auto 0;
+      padding: 40px;
+      background: #ffffff;
+      border: 1px solid #f0e5d6;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(70, 51, 34, 0.08);
+    }
+
+    .feedback-card h2 {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      margin: 0 0 10px;
+      color: #463322;
+    }
+
+    .form-intro {
+      line-height: 1.7;
+      color: #685443;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group > label,
+    .question-title {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.6;
+      color: #463322;
+    }
+
+    .optional {
+      font-size: 13px;
+      font-weight: 400;
+      color: #777;
+    }
+
+    .form-group input:not([type="radio"]):not([type="checkbox"]),
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #dfd5c9;
+      border-radius: 12px;
+      background: #fffdf9;
+      color: #333;
+      font: inherit;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #f4511e;
+      box-shadow: 0 0 0 3px rgba(244, 81, 30, 0.12);
+    }
+
+    /* RATING */
+
+    .rating-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .rating-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 15px;
+      border: 1px solid #ead9c4;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .rating-option:has(input:checked) {
+      background: #fff3d6;
+      border-color: #f9a825;
+    }
+
+    .rating-option input {
+      accent-color: #f4511e;
+    }
+
+    /* CHECKBOXES */
+
+    .check-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 13px 0;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .check-option input {
+      margin-top: 5px;
+      accent-color: #f4511e;
+      flex-shrink: 0;
+    }
+
+    /* BUTTONS */
+
+    .form-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .submit-btn,
+    .back-link {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #ff7043, #f4511e);
+      color: #ffffff;
+      box-shadow: 0 6px 15px rgba(244, 81, 30, 0.25);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(244, 81, 30, 0.3);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* BACK TO HOME */
+
+    .back-link {
+      background: linear-gradient(135deg, #ffd54f, #f9a825);
+      color: #463322;
+      box-shadow: 0 6px 15px rgba(249, 168, 37, 0.3);
+    }
+
+    .back-link:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 0 12px #ffd54f,
+        0 0 25px #ffca28,
+        0 0 45px #ffab40,
+        0 10px 30px rgba(249, 168, 37, 0.6);
+    }
+
+    .back-link:active {
+      transform: scale(0.96);
+      box-shadow:
+        0 0 18px #ffd54f,
+        0 0 35px #ffca28,
+        0 0 60px #ffab40;
+    }
+
+    /* FORM MESSAGE */
+
+    .form-message {
+      display: none;
+      margin-top: 25px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #fff3d6;
+      color: #674214;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .form-message.visible {
+      display: block;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #463322;
+      color: #fff3d6;
+      text-align: center;
+      padding: 30px 20px;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .page-wrap {
+        padding: 60px 30px;
+      }
+
+      .page-title {
+        font-size: 48px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 20px;
+      }
+
+      header nav {
+        gap: 20px;
+      }
+
+      header nav a {
+        font-size: 14px;
+      }
+
+      .page-wrap {
+        padding: 45px 18px;
+      }
+
+      .page-title {
+        font-size: 38px;
+      }
+
+      .lead {
+        font-size: 15px;
+      }
+
+      .feedback-card {
+        padding: 25px 20px;
+        margin-top: 30px;
+        border-radius: 20px;
+      }
+
+      .feedback-card h2 {
+        font-size: 25px;
+      }
+
+      .rating-options {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .rating-option {
+        width: 100%;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+
+      .submit-btn,
+      .back-link {
+        width: 100%;
+      }
+    }
+
+    /* REDUCED MOTION */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a class="active" href="feedbackone.html" aria-current="page">Feedback</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+
+  <main class="page-wrap">
+
+    <p class="eyebrow">YOUR VOICE MATTERS</p>
+
+    <h1 class="page-title">
+      Share Your Feedback.
+    </h1>
+
+    <p class="lead">
+      Help us improve The Firefly's Story. Tell us about your experience
+      with the story, illustrations, characters, and Filipino Sign Language.
+      Your feedback will help us create a more accessible and inclusive
+      storytelling experience.
+    </p>
+
+    <!-- FEEDBACK FORM -->
+
+    <section class="feedback-card" aria-labelledby="form-title">
+
+      <h2 id="form-title">Feedback Form</h2>
+
+      <p class="form-intro">
+        Please answer the questions below. Your name is optional,
+        and you can skip questions that do not apply to you.
+      </p>
+
+      <form id="feedbackForm">
+
+        <!-- NAME -->
+
+        <div class="form-group">
+          <label for="name">
+            Name <span class="optional">(Optional)</span>
+          </label>
+
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            autocomplete="name">
+        </div>
+
+        <!-- ROLE -->
+
+        <div class="form-group">
+          <label for="role">Which best describes you?</label>
+
+          <select id="role" name="role" required>
+            <option value="">Choose your role</option>
+            <option value="Deaf">Deaf</option>
+            <option value="Hard of Hearing">Hard of Hearing</option>
+            <option value="Hearing">Hearing</option>
+            <option value="Student">Student</option>
+            <option value="Teacher or Educator">Teacher or Educator</option>
+            <option value="Parent or Guardian">Parent or Guardian</option>
+            <option value="Other">Other</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+          </select>
+        </div>
+
+        <!-- OVERALL RATING -->
+
+        <div class="form-group">
+
+          <p class="question-title">
+            1. How would you rate your overall experience?
+          </p>
+
+          <div class="rating-options">
+
+            <label class="rating-option">
+              <input type="radio" name="overall" value="5" required>
+              <span>Excellent</span>
+            </label>
+
+            <label class="rating-option">
+              <input type="radio" name="overall" value="4">
+              <span>Very Good</span>
+            </label>
+
+            <label class="rating-option">
+              <input type="radio" name="overall" value="3">
+              <span>Good</span>
+            </label>
+
+            <label class="rating-option">
+              <input type="radio" name="overall" value="2">
+              <span>Fair</span>
+            </label>
+
+            <label class="rating-option">
+              <input type="radio" name="overall" value="1">
+              <span>Needs Improvement</span>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- STORY -->
+
+        <div class="form-group">
+          <label for="story">
+            2. Was the story easy to understand?
+          </label>
+
+          <select id="story" name="story" required>
+            <option value="">Choose your answer</option>
+            <option value="Very easy">Very easy</option>
+            <option value="Easy">Easy</option>
+            <option value="Somewhat easy">Somewhat easy</option>
+            <option value="Difficult">Difficult</option>
+            <option value="Very difficult">Very difficult</option>
+          </select>
+        </div>
+
+        <!-- ILLUSTRATIONS -->
+
+        <div class="form-group">
+          <label for="illustrations">
+            3. What do you think of the illustrations and character designs?
+          </label>
+
+          <select id="illustrations" name="illustrations" required>
+            <option value="">Choose your answer</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Very good">Very good</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Needs improvement">Needs improvement</option>
+          </select>
+        </div>
+
+        <!-- FSL -->
+
+        <div class="form-group">
+          <label for="fsl">
+            4. How well did the Filipino Sign Language (FSL)
+            presentation support your understanding?
+          </label>
+
+          <select id="fsl" name="fsl" required>
+            <option value="">Choose your answer</option>
+            <option value="Very well">Very well</option>
+            <option value="Well">Well</option>
+            <option value="Somewhat">Somewhat</option>
+            <option value="Not very well">Not very well</option>
+            <option value="Not applicable">Not applicable</option>
+          </select>
+        </div>
+
+        <!-- ACCESSIBILITY -->
+
+        <div class="form-group">
+
+          <p class="question-title">
+            5. Which parts of the project did you find helpful?
+            <span class="optional">(Select all that apply)</span>
+          </p>
+
+          <label class="check-option">
+            <input type="checkbox" name="helpful" value="Story">
+            <span>The story and its message</span>
+          </label>
+
+          <label class="check-option">
+            <input type="checkbox" name="helpful" value="Illustrations">
+            <span>The illustrations and character designs</span>
+          </label>
+
+          <label class="check-option">
+            <input type="checkbox" name="helpful" value="FSL">
+            <span>Filipino Sign Language (FSL)</span>
+          </label>
+
+          <label class="check-option">
+            <input type="checkbox" name="helpful" value="Visual storytelling">
+            <span>Visual storytelling and facial expressions</span>
+          </label>
+
+          <label class="check-option">
+            <input type="checkbox" name="helpful" value="Website">
+            <span>The website and navigation</span>
+          </label>
+
+        </div>
+
+        <!-- WHAT THEY LIKED -->
+
+        <div class="form-group">
+          <label for="suggestions">
+            6. What did you like most about the project?
+          </label>
+
+          <textarea
+            id="suggestions"
+            name="suggestions"
+            placeholder="Share what you liked..."></textarea>
+        </div>
+
+        <!-- IMPROVEMENTS -->
+
+        <div class="form-group">
+          <label for="improvements">
+            7. What can we improve?
+          </label>
+
+          <textarea
+            id="improvements"
+            name="improvements"
+            placeholder="Share your ideas or suggestions..."></textarea>
+        </div>
+
+        <!-- OTHER COMMENTS -->
+
+        <div class="form-group">
+          <label for="comments">
+            8. Other comments
+            <span class="optional">(Optional)</span>
+          </label>
+
+          <textarea
+            id="comments"
+            name="comments"
+            placeholder="Anything else you would like to share?"></textarea>
+        </div>
+
+        <!-- BUTTONS -->
+
+        <div class="form-actions">
+
+          <button type="submit" class="submit-btn">
+            Submit Feedback
+          </button>
+
+          <a href="index.html" class="back-link">
+            Back to Home
+          </a>
+
+        </div>
+
+        <!-- CONFIRMATION MESSAGE -->
+
+        <div
+          id="formMessage"
+          class="form-message"
+          role="status"
+          aria-live="polite"
+          tabindex="-1">
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    De La Salle–College of Saint Benilde · SDEAS © 2026 The Firefly's Story · Inclusive Visual Storytelling
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
+
+    const GOOGLE_SCRIPT_URL =
+      "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+    const feedbackForm = document.getElementById("feedbackForm");
+
+    const formMessage = document.getElementById("formMessage");
+
+    const submitButton =
+      feedbackForm.querySelector('button[type="submit"]');
+
+    feedbackForm.addEventListener("submit", async function(event) {
+
+      event.preventDefault();
+
+      if (!feedbackForm.reportValidity()) {
+        return;
+      }
+
+      if (
+        GOOGLE_SCRIPT_URL ===
+        "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"
+      ) {
+
+        formMessage.textContent =
+          "Your form is ready, but it is not connected yet. Please complete the Google Sheets setup and add your web app URL.";
+
+        formMessage.classList.add("visible");
+        formMessage.focus();
+
+        return;
+      }
+
+      const formData = new FormData(feedbackForm);
+
+      const responseData = {};
+
+      for (const [key, value] of formData.entries()) {
+
+        if (key === "helpful") {
+
+          if (!responseData.helpful) {
+            responseData.helpful = [];
+          }
+
+          responseData.helpful.push(value);
+
+        } else {
+
+          responseData[key] = value;
+
+        }
+
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+
+      try {
+
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(responseData)
+        });
+
+        formMessage.textContent =
+          "Thank you for sharing your feedback! We appreciate your time and suggestions.";
+
+        formMessage.classList.add("visible");
+        formMessage.focus();
+
+        feedbackForm.reset();
+
+      } catch (error) {
+
+        formMessage.textContent =
+          "Sorry, we could not send your feedback. Please check your internet connection and try again.";
+
+        formMessage.classList.add("visible");
+        formMessage.focus();
+
+      } finally {
+
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Feedback";
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

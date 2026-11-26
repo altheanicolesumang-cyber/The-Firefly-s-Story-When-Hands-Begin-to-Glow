@@ -1,0 +1,803 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Watch The Firefly's Story through Filipino Sign Language and visual storytelling.">
+
+  <title>The Firefly's Story | Video</title>
+
+  <style>
+
+    /* =====================================
+       GENERAL DESIGN
+    ===================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff8e8;
+      color: #3b3025;
+      line-height: 1.7;
+    }
+
+    /* =====================================
+       HEADER AND NAVIGATION
+    ===================================== */
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 40px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 38px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      color: #5c4632;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #f4511e;
+      transform: translateY(-3px);
+    }
+
+    nav a.active {
+      color: #f4511e;
+      font-weight: 800;
+    }
+
+    nav a:focus-visible,
+    .back-home:focus-visible {
+      outline: 3px solid #ffd54f;
+      outline-offset: 4px;
+    }
+
+    /* =====================================
+       VIDEO PAGE
+    ===================================== */
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 25px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: #f4511e;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+
+    .page-title {
+      font-family: Georgia, serif;
+      font-size: 65px;
+      line-height: 1.15;
+      margin: 10px auto 18px;
+      color: #463322;
+    }
+
+    .page-title span {
+      color: #ff8a00;
+      font-style: italic;
+    }
+
+    .lead {
+      color: #685443;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* =====================================
+       VIDEO SECTION
+    ===================================== */
+
+    .video-layout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 35px;
+      margin-top: 50px;
+    }
+
+    /* =====================================
+       VIDEO BOX
+    ===================================== */
+
+    .video-box {
+      position: relative;
+      width: 100%;
+      max-width: 850px;
+      aspect-ratio: 16 / 9;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(
+        135deg,
+        #fff3d6,
+        #ffe0b2
+      );
+      box-shadow: 0 12px 35px rgba(92, 70, 50, 0.12);
+    }
+
+    .video-box video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #2b2118;
+      border-radius: 24px;
+    }
+
+    /* =====================================
+       BIG PLAY BUTTON
+    ===================================== */
+
+    .big-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 75px;
+      height: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(
+        135deg,
+        #ff7043,
+        #f4511e
+      );
+      color: white;
+      font-size: 28px;
+      padding-left: 5px;
+      box-shadow: 0 8px 25px rgba(244, 81, 30, 0.35);
+      cursor: pointer;
+      z-index: 5;
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+    }
+
+    .big-play:hover {
+      transform: translate(-50%, -50%) scale(1.08);
+      box-shadow: 0 10px 30px rgba(244, 81, 30, 0.45);
+    }
+
+    .big-play.hidden {
+      display: none;
+    }
+
+    /* =====================================
+       FULLSCREEN BUTTON
+    ===================================== */
+
+    .fullscreen-btn {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.65);
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .fullscreen-btn:hover {
+      transform: scale(1.08);
+      background: rgba(0, 0, 0, 0.85);
+    }
+
+    /* =====================================
+       VIDEO INFORMATION
+    ===================================== */
+
+    .side-info {
+      width: 100%;
+      max-width: 750px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5px 20px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 15px;
+      border-radius: 50px;
+      background: #fff3cd;
+      color: #f4511e;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    .side-info h2 {
+      font-family: Georgia, serif;
+      font-size: 34px;
+      line-height: 1.25;
+      margin: 16px auto;
+      color: #463322;
+    }
+
+    .side-info p {
+      max-width: 650px;
+      color: #685443;
+      line-height: 1.8;
+      margin: 15px auto 25px;
+      text-align: center;
+    }
+
+    /* =====================================
+       BACK TO HOME BUTTON WITH GLOW
+    ===================================== */
+
+    .back-home-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0 10px;
+    }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 50px;
+      background: linear-gradient(
+        135deg,
+        #ffd54f,
+        #f9a825
+      );
+      color: #533c19;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 6px 15px rgba(249, 168, 37, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .back-home:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 0 15px #fff176,
+        0 0 30px #ffd54f,
+        0 0 50px #ffb300,
+        0 10px 35px rgba(255, 152, 0, 0.6);
+    }
+
+    .back-home:active {
+      transform: scale(0.94);
+      animation: fireflyButtonGlow 0.85s ease-out;
+    }
+
+    @keyframes fireflyButtonGlow {
+
+      0% {
+        transform: scale(0.97);
+        box-shadow: 0 6px 15px rgba(249, 168, 37, 0.25);
+      }
+
+      30% {
+        transform: scale(1.05);
+        box-shadow:
+          0 0 20px #ffffff,
+          0 0 45px #fff176,
+          0 0 80px #ffd54f,
+          0 0 120px #ffb300,
+          0 0 170px #ff9800;
+      }
+
+      60% {
+        transform: scale(1.02);
+        box-shadow:
+          0 0 25px #ffffff,
+          0 0 55px #fff59d,
+          0 0 95px #ffd54f,
+          0 0 140px #ffb300;
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 6px 15px rgba(249, 168, 37, 0.25);
+      }
+
+    }
+
+    /* =====================================
+       FOOTER
+    ===================================== */
+
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      padding: 30px 20px;
+      flex-wrap: wrap;
+      background: #463322;
+      color: #fff3d6;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* =====================================
+       RESPONSIVE DESIGN
+    ===================================== */
+
+    @media (max-width: 900px) {
+
+      .page-wrap {
+        padding: 60px 30px;
+      }
+
+      .page-title {
+        font-size: 55px;
+      }
+
+      .video-layout {
+        gap: 30px;
+      }
+
+      .video-box {
+        max-width: 100%;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      header {
+        padding: 20px;
+      }
+
+      nav {
+        gap: 20px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .page-wrap {
+        padding: 50px 20px 70px;
+      }
+
+      .page-title {
+        font-size: 42px;
+      }
+
+      .lead {
+        font-size: 15px;
+      }
+
+      .video-layout {
+        margin-top: 35px;
+        gap: 25px;
+      }
+
+      .side-info {
+        padding: 0 10px;
+      }
+
+      .side-info h2 {
+        font-size: 28px;
+      }
+
+      .side-info p {
+        font-size: 15px;
+      }
+
+      .big-play {
+        width: 60px;
+        height: 60px;
+        font-size: 22px;
+      }
+
+      .fullscreen-btn {
+        width: 38px;
+        height: 38px;
+        right: 10px;
+        bottom: 10px;
+        font-size: 20px;
+      }
+
+    }
+
+    /* =====================================
+       REDUCED MOTION ACCESSIBILITY
+    ===================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .back-home:hover,
+      .big-play:hover,
+      .fullscreen-btn:hover {
+        transform: none;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- =====================================
+       HEADER AND NAVIGATION
+  ===================================== -->
+
+  <header>
+
+    <nav aria-label="Main navigation">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="feedbackone.html">
+        Feedback
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =====================================
+       MAIN CONTENT
+  ===================================== -->
+
+  <main class="page-wrap">
+
+    <p class="eyebrow">
+      VIDEO
+    </p>
+
+    <h1 class="page-title">
+      Watch the <span>Story.</span>
+    </h1>
+
+    <p class="lead">
+      Watch the story come to life through Filipino Sign Language
+      and visual storytelling.
+    </p>
+
+
+    <!-- =====================================
+         VIDEO AND INFORMATION
+    ===================================== -->
+
+    <div class="video-layout">
+
+
+      <!-- VIDEO PLAYER -->
+
+      <div class="video-box">
+
+        <video
+          id="storyVideo"
+          controls
+          playsinline
+          preload="metadata"
+        >
+
+          <source
+            src="story.mp4"
+            type="video/mp4"
+          >
+
+          Your browser does not support video.
+
+        </video>
+
+
+        <!-- BIG PLAY BUTTON -->
+
+        <button
+          class="big-play"
+          id="bigPlay"
+          type="button"
+          aria-label="Play story video"
+        >
+          ▶
+        </button>
+
+
+        <!-- FULLSCREEN BUTTON -->
+
+        <button
+          class="fullscreen-btn"
+          id="fullscreenBtn"
+          type="button"
+          aria-label="Fullscreen"
+          title="Fullscreen"
+        >
+          ⛶
+        </button>
+
+      </div>
+
+
+      <!-- =====================================
+           VIDEO INFORMATION
+      ===================================== -->
+
+      <div class="side-info">
+
+        <span class="tag">
+          FSL STORY
+        </span>
+
+        <h2>
+          A Story Told Through Signs
+        </h2>
+
+        <p>
+          The story is told through Filipino Sign Language (FSL).
+          Through hand movements, facial expressions, and visual
+          storytelling, Alipat shares the story in a way that can
+          be seen and understood.
+        </p>
+
+
+        <!-- BACK TO HOME BUTTON -->
+
+        <div class="back-home-wrapper">
+
+          <a
+            href="index.html"
+            class="back-home"
+          >
+          Back to Home
+        </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================
+       FOOTER
+  ===================================== -->
+
+  <footer>
+
+    <p>
+      De La Salle–College of Saint Benilde · SDEAS
+    </p>
+
+    <p>
+      © 2026 The Firefly's Story · Inclusive Visual Storytelling
+    </p>
+
+  </footer>
+
+
+  <!-- =====================================
+       VIDEO SCRIPT
+  ===================================== -->
+
+  <script>
+
+    const video = document.getElementById("storyVideo");
+
+    const bigPlay = document.getElementById("bigPlay");
+
+    const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+
+    /* =====================================
+       BIG PLAY BUTTON
+    ===================================== */
+
+    bigPlay.addEventListener("click", () => {
+
+      video.play().catch(error => {
+        console.log("Video could not be played.", error);
+      });
+
+    });
+
+
+    /* =====================================
+       HIDE BIG PLAY WHEN VIDEO PLAYS
+    ===================================== */
+
+    video.addEventListener("play", () => {
+
+      bigPlay.classList.add("hidden");
+
+    });
+
+
+    /* =====================================
+       SHOW BIG PLAY WHEN VIDEO IS PAUSED
+    ===================================== */
+
+    video.addEventListener("pause", () => {
+
+      if (!video.ended) {
+
+        bigPlay.classList.remove("hidden");
+
+      }
+
+    });
+
+
+    /* =====================================
+       SHOW BIG PLAY WHEN VIDEO ENDS
+    ===================================== */
+
+    video.addEventListener("ended", () => {
+
+      bigPlay.classList.remove("hidden");
+
+    });
+
+
+    /* =====================================
+       FULLSCREEN BUTTON
+    ===================================== */
+
+    fullscreenBtn.addEventListener("click", async () => {
+
+      try {
+
+        if (!document.fullscreenElement) {
+
+          if (video.requestFullscreen) {
+
+            await video.requestFullscreen();
+
+          }
+
+          else if (video.webkitEnterFullscreen) {
+
+            video.webkitEnterFullscreen();
+
+          }
+
+          else if (video.webkitRequestFullscreen) {
+
+            video.webkitRequestFullscreen();
+
+          }
+
+        }
+
+        else {
+
+          if (document.exitFullscreen) {
+
+            await document.exitFullscreen();
+
+          }
+
+          else if (document.webkitExitFullscreen) {
+
+            document.webkitExitFullscreen();
+
+          }
+
+        }
+
+      }
+
+      catch (error) {
+
+        console.log(
+          "Fullscreen could not be opened.",
+          error
+        );
+
+      }
+
+    });
+
+
+    /* =====================================
+       UPDATE FULLSCREEN BUTTON
+    ===================================== */
+
+    document.addEventListener("fullscreenchange", () => {
+
+      if (document.fullscreenElement) {
+
+        fullscreenBtn.textContent = "×";
+
+        fullscreenBtn.setAttribute(
+          "aria-label",
+          "Exit fullscreen"
+        );
+
+        fullscreenBtn.setAttribute(
+          "title",
+          "Exit fullscreen"
+        );
+
+      }
+
+      else {
+
+        fullscreenBtn.textContent = "⛶";
+
+        fullscreenBtn.setAttribute(
+          "aria-label",
+          "Fullscreen"
+        );
+
+        fullscreenBtn.setAttribute(
+          "title",
+          "Fullscreen"
+        );
+
+      }
+
+    });
+
+
+  </script>
+
+</body>
+
+</html>
