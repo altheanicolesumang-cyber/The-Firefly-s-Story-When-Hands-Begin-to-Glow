@@ -1,0 +1,791 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Learn five basic Filipino Sign Language vocabulary words inspired by The Firefly's Story.">
+
+  <title>The Firefly's Story | Learn Basic FSL</title>
+
+  <style>
+
+    /* =====================================
+       GENERAL DESIGN
+    ===================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff8e8;
+      color: #3b3025;
+      line-height: 1.7;
+    }
+
+    /* =====================================
+       HEADER AND NAVIGATION
+    ===================================== */
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 40px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 38px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      color: #5c4632;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #f4511e;
+      transform: translateY(-3px);
+    }
+
+    nav a.active {
+      color: #f4511e;
+      font-weight: 800;
+    }
+
+    nav a:focus-visible,
+    .back-home:focus-visible,
+    .watch-story:focus-visible {
+      outline: 3px solid #ffd54f;
+      outline-offset: 4px;
+    }
+
+    /* =====================================
+       MAIN PAGE
+    ===================================== */
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 75px 25px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: #f4511e;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+
+    .page-title {
+      font-family: Georgia, serif;
+      font-size: 60px;
+      line-height: 1.15;
+      margin: 10px auto 18px;
+      color: #463322;
+    }
+
+    .page-title span {
+      color: #ff8a00;
+      font-style: italic;
+    }
+
+    .lead {
+      color: #685443;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* =====================================
+       INTRODUCTION
+    ===================================== */
+
+    .intro {
+      max-width: 750px;
+      margin: 45px auto 35px;
+      padding: 25px;
+      background: #fff3cd;
+      border-radius: 20px;
+    }
+
+    .intro h2 {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      color: #463322;
+      margin: 0 0 10px;
+    }
+
+    .intro p {
+      color: #685443;
+      margin: 0;
+    }
+
+    /* =====================================
+       FSL VOCABULARY GRID
+    ===================================== */
+
+    .vocabulary-section {
+      margin-top: 55px;
+    }
+
+    .section-title {
+      font-family: Georgia, serif;
+      font-size: 35px;
+      color: #463322;
+      margin-bottom: 10px;
+    }
+
+    .section-description {
+      color: #685443;
+      margin: 0 auto 35px;
+      max-width: 650px;
+    }
+
+    .vocabulary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* =====================================
+       VOCABULARY CARDS
+    ===================================== */
+
+    .word-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 25px 20px;
+      box-shadow: 0 8px 25px rgba(92, 70, 50, 0.09);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .word-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(244, 129, 30, 0.18);
+    }
+
+    .word-number {
+      display: inline-block;
+      background: #fff3cd;
+      color: #f4511e;
+      padding: 5px 13px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .word-card h3 {
+      font-family: Georgia, serif;
+      color: #463322;
+      font-size: 27px;
+      margin: 5px 0;
+    }
+
+    .word-card .meaning {
+      color: #f4511e;
+      font-weight: 700;
+      font-size: 14px;
+      margin: 0 0 18px;
+    }
+
+    /* =====================================
+       FSL VIDEO PLACEHOLDER
+    ===================================== */
+
+    .fsl-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #fff3cd;
+      border: 2px dashed #f9a825;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      color: #8a642d;
+      overflow: hidden;
+    }
+
+    .fsl-video iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .video-placeholder {
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .video-placeholder span {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .word-note {
+      font-size: 13px;
+      color: #806d5a;
+      margin: 15px 0 0;
+    }
+
+    /* =====================================
+       LEARNING REMINDER
+    ===================================== */
+
+    .learning-note {
+      max-width: 800px;
+      margin: 55px auto 20px;
+      padding: 25px;
+      background: #fff3cd;
+      border-left: 5px solid #ff9800;
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .learning-note h2 {
+      font-family: Georgia, serif;
+      color: #463322;
+      font-size: 24px;
+      margin: 0 0 8px;
+    }
+
+    .learning-note p {
+      color: #685443;
+      margin: 0;
+    }
+
+    /* =====================================
+       BUTTONS
+    ===================================== */
+
+    .button-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 35px 0 10px;
+    }
+
+    .back-home,
+    .watch-story {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ORANGE WATCH STORY BUTTON */
+
+    .watch-story {
+      background: linear-gradient(135deg, #ff9800, #f4511e);
+      color: #ffffff;
+      box-shadow: 0 6px 15px rgba(244, 81, 30, 0.3);
+    }
+
+    .watch-story:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 0 15px #ffcc80,
+        0 0 30px #ff9800,
+        0 0 50px #f4511e;
+    }
+
+    /* YELLOW BACK TO HOME BUTTON */
+
+    .back-home {
+      background: linear-gradient(135deg, #ffd54f, #f9a825);
+      color: #533c19;
+      box-shadow: 0 6px 15px rgba(249, 168, 37, 0.25);
+    }
+
+    .back-home:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 0 15px #fff176,
+        0 0 30px #ffd54f,
+        0 0 50px #ffb300;
+    }
+
+    .back-home:active,
+    .watch-story:active {
+      transform: scale(0.94);
+      animation: fireflyButtonGlow 0.85s ease-out;
+    }
+
+    @keyframes fireflyButtonGlow {
+
+      0% {
+        transform: scale(0.97);
+        box-shadow: 0 6px 15px rgba(249, 168, 37, 0.25);
+      }
+
+      30% {
+        transform: scale(1.05);
+        box-shadow:
+          0 0 20px #ffffff,
+          0 0 45px #fff176,
+          0 0 80px #ffd54f,
+          0 0 120px #ffb300;
+      }
+
+      60% {
+        transform: scale(1.02);
+        box-shadow:
+          0 0 25px #ffffff,
+          0 0 55px #fff59d,
+          0 0 95px #ffd54f;
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 6px 15px rgba(249, 168, 37, 0.25);
+      }
+
+    }
+
+    /* =====================================
+       FOOTER
+    ===================================== */
+
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      padding: 30px 20px;
+      flex-wrap: wrap;
+      background: #463322;
+      color: #fff3d6;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* =====================================
+       RESPONSIVE DESIGN
+    ===================================== */
+
+    @media (max-width: 900px) {
+
+      .page-wrap {
+        padding: 60px 25px;
+      }
+
+      .page-title {
+        font-size: 52px;
+      }
+
+      .vocabulary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      header {
+        padding: 20px;
+      }
+
+      nav {
+        gap: 20px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .page-wrap {
+        padding: 50px 20px 70px;
+      }
+
+      .page-title {
+        font-size: 40px;
+      }
+
+      .lead {
+        font-size: 15px;
+      }
+
+      .intro {
+        padding: 20px;
+        margin-top: 35px;
+      }
+
+      .intro h2 {
+        font-size: 23px;
+      }
+
+      .section-title {
+        font-size: 29px;
+      }
+
+      .vocabulary-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .word-card {
+        padding: 22px 18px;
+      }
+
+      .learning-note {
+        padding: 20px;
+      }
+
+    }
+
+    /* =====================================
+       REDUCED MOTION ACCESSIBILITY
+    ===================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .word-card:hover,
+      .back-home:hover,
+      .watch-story:hover {
+        transform: none;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- =====================================
+       HEADER AND NAVIGATION
+  ===================================== -->
+
+<header>
+
+    <nav aria-label="Main navigation">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+      <a href="feedbackone.html">
+        Feedback
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =====================================
+       MAIN CONTENT
+  ===================================== -->
+
+  <main class="page-wrap">
+
+    <p class="eyebrow">
+      LEARNING CORNER
+    </p>
+
+    <h1 class="page-title">
+      Learn Basic <span>FSL.</span>
+    </h1>
+
+    <p class="lead">
+      Discover five simple vocabulary words inspired by
+      The Firefly's Story: When Hands Begin to Glow.
+    </p>
+
+
+    <!-- =====================================
+         INTRODUCTION
+    ===================================== -->
+
+    <section class="intro">
+
+      <h2>
+        Let's Learn Together!
+      </h2>
+
+      <p>
+        Filipino Sign Language (FSL) is a visual language.
+        It uses hand movements, facial expressions, and body
+        movements to communicate. Explore these five words
+        and practice signing along with the demonstrations.
+      </p>
+
+    </section>
+
+
+    <!-- =====================================
+         FIVE FSL VOCABULARY WORDS
+    ===================================== -->
+
+    <section class="vocabulary-section">
+
+      <h2 class="section-title">
+        Five Basic Words
+      </h2>
+
+      <p class="section-description">
+        These words are connected to Alipat's story.
+        Watch each FSL demonstration and practice the signs.
+      </p>
+
+
+      <div class="vocabulary-grid">
+
+
+        <!-- WORD 1: FIREFLY -->
+
+       <article class="word-card">
+
+  <span class="word-number">WORD 01</span>
+
+  <h3>Hello</h3>
+
+  <p class="meaning">
+    A friendly greeting used when meeting someone.
+  </p>
+
+  <div class="fsl-video">
+    <iframe
+      src="https://www.youtube.com/embed/hoKwU1Z9qDY?si=2y4FhrKFElpQELMQ"
+      title="Hello - Filipino Sign Language"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <p class="word-note">
+    Watch the sign and practice carefully.
+  </p>
+
+</article>
+
+
+<!-- WORD 2: FRIEND -->
+
+<article class="word-card">
+
+  <span class="word-number">WORD 02</span>
+
+  <h3>Friend</h3>
+
+  <p class="meaning">
+    Someone who cares and shares moments with us.
+  </p>
+
+  <div class="fsl-video">
+    <iframe
+      src="https://www.youtube.com/embed/0Sm9KENRl00?si=aDLC-OvdEkB_RJNT"
+      title="Friend - Filipino Sign Language"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <p class="word-note">
+    Watch the sign and practice carefully.
+  </p>
+
+</article>
+
+
+<!-- WORD 3: THANK YOU -->
+
+<article class="word-card">
+
+  <span class="word-number">WORD 03</span>
+
+  <h3>Thank You</h3>
+
+  <p class="meaning">
+    A polite expression used to show appreciation or gratitude.
+  </p>
+
+  <div class="fsl-video">
+    <iframe
+      src="https://www.youtube.com/embed/y8hPJ4AKJgU?si=QEqpfZfUa14NfRQZ"
+      title="Thank You - Filipino Sign Language"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <p class="word-note">
+    Watch the sign and practice carefully.
+  </p>
+
+</article>
+
+
+<!-- WORD 4: FOLLOW -->
+
+<article class="word-card">
+
+  <span class="word-number">WORD 04</span>
+
+  <h3>Follow</h3>
+
+  <p class="meaning">
+    To go after someone or something.
+  </p>
+
+  <div class="fsl-video">
+    <iframe
+      src="https://www.youtube.com/embed/ad1Hdw0OubQ?si=Nxoedhq7A2N6KfoB"
+      title="Follow - Filipino Sign Language"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <p class="word-note">
+    Watch the sign and practice carefully.
+  </p>
+
+</article>
+
+
+<!-- WORD 5: ALIPAT -->
+
+<article class="word-card">
+
+  <span class="word-number">WORD 05</span>
+
+  <h3>Alipat</h3>
+
+  <p class="meaning">
+    A Deaf firefly with a glowing light.
+  </p>
+
+  <div class="fsl-video">
+    <iframe
+      src="https://www.youtube.com/embed/6gWrFtPjJ0o?si=RaAIswo_v2zn2nE5"
+      title="Alipat - Filipino Sign Language"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <p class="word-note">
+    Watch the sign and practice carefully.
+  </p>
+
+</article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================
+         LEARNING REMINDER
+    ===================================== -->
+
+    <section class="learning-note">
+
+      <h2>
+        Remember!
+      </h2>
+
+      <p>
+        FSL is more than hand movements. Facial expressions
+        and body movements are also important parts of signing.
+        Keep practicing and respect Filipino Sign Language
+        as a language and part of Deaf culture.
+      </p>
+
+    </section>
+
+
+    <!-- =====================================
+         NAVIGATION BUTTONS
+    ===================================== -->
+
+    <div class="button-wrapper">
+
+      <a
+        href="video.html"
+        class="watch-story">
+        Watch the Story
+      </a>
+
+      <a
+        href="index.html"
+        class="back-home">
+        Back to Home
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================
+       FOOTER
+  ===================================== -->
+
+  <footer>
+
+    <p>
+      De La Salle–College of Saint Benilde · SDEAS
+    </p>
+
+    <p>
+      © 2026 The Firefly's Story · Inclusive Visual Storytelling
+    </p>
+
+</footer>
+
+</body>
+
+</html>
